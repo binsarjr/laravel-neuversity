@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Dosen extends Model
 {
     use HasFactory;
-    public $fillable = ['nip', 'nama', 'kelamin', 'sudah_menikah', 'alamat'];
+    public $fillable = ['nip', 'nama', 'kelamin', 'sudah_menikah', 'alamat', 'slug'];
     public $appends = ['status_menikah'];
 
     public function statusMenikah(): Attribute

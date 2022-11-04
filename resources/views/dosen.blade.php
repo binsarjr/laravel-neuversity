@@ -10,12 +10,21 @@
 
 <body>
     <h1>{{ $title }}</h1>
+    <a href="/dosen/create" class="">Tambah Dosen</a>
     <form action="">
         <input type="text" name="q" placeholder="Cari dosen">
     </form>
-    @foreach ($dosen as $dosen)
-        <h2>{{ $dosen->nama }} - {{ $dosen->status_menikah }}</h2>
-    @endforeach
+
+    <ul>
+        @foreach ($dosen as $dosen)
+            <li>
+                <h2>{{ $dosen->nama }} - {{ $dosen->status_menikah }}</h2>
+                <a href="/dosen/{{ $dosen->id }}">Edit</a>
+                <a href="/dosen/{{ $dosen->id }}/hapus">Hapus</a>
+            </li>
+        @endforeach
+    </ul>
+
 </body>
 
 </html>

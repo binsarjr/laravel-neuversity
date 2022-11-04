@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\DosenController;
 use App\Models\Dosen;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,3 +20,15 @@ Route::get('/', function () {
 });
 
 Route::get('/dosen', [DosenController::class, 'index']);
+
+// View Create
+Route::get('/dosen/create', [DosenController::class, 'create']);
+// Proses Create
+Route::post('/dosen/create', [DosenController::class, 'store']);
+
+// View Edit
+Route::get('/dosen/{dosen}', [DosenController::class, 'edit']);
+// Proses Dari Edit
+Route::put('/dosen/{dosen}', [DosenController::class, 'update']);
+// Proses Hapus
+Route::get('/dosen/{dosen}/hapus', [DosenController::class, 'destroy']);
