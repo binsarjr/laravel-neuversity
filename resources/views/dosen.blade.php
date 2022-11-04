@@ -1,30 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layout.app')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
+@section('title', $title)
 
-<body>
-    <h1>{{ $title }}</h1>
-    <a href="/dosen/create" class="">Tambah Dosen</a>
+@section('content')
+    <a href="/dosen/create" class="button is-success is-light is-small">Tambah Dosen</a>
     <form action="">
-        <input type="text" name="q" placeholder="Cari dosen">
+        <input type="text" name="q" placeholder="Cari dosen" class="input mt-5" autofocus>
     </form>
 
-    <ul>
-        @foreach ($dosen as $dosen)
-            <li>
-                <h2>{{ $dosen->nama }} - {{ $dosen->status_menikah }}</h2>
-                <a href="/dosen/{{ $dosen->id }}">Edit</a>
-                <a href="/dosen/{{ $dosen->id }}/hapus">Hapus</a>
-            </li>
-        @endforeach
-    </ul>
+    <table class="table">
+        <caption>Tabel Dosen</caption>
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>NIP</th>
+                <th>Nama</th>
+                <th>Jenis Kelamin</th>
+                <th>Alamat</th>
+                <th>Status</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($dosen as $dosen)
+                <tr>
+                    <td>{{ $loop->iteration }}</td>
+                    <td>{{ $dosen->nip }}</td>
+                    <td>{{ $dosen->nama }}</td>
+                    <td>{{ $dosen->kelamin == 'L' ? 'Laki-Laki' : 'Perempuan' }}</td>
+                    <td>{{ $dosen->alamat }}</td>
+                    <td>{{ $dosen->sudah_menikah ? 'Sudah Menikah' : 'Belum Menikah' }}</td>
+                    <td>
+                        <a href="/dosen/{{ $dosen->id }}" class="button is-small is-warning">Edit</a>
+                        <a href="/dosen/{{ $dosen->id }}/hapus" class="button is-small is-danger">Hapus</a>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
+    </table>
+@endsection
 
-</body>
 
-</html>
+@push('styles')
+    @vite(['resources/css/dosen.css'])
+@endpush
+
+
+@push('scripts')
+    @vite(['resources/js/dosen.js'])
+@endpush

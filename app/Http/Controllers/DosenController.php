@@ -20,7 +20,7 @@ class DosenController extends Controller
         } else {
             $dosen = Dosen::all();
         }
-        $title = "Semua Dosen sadasdasd";
+        $title = "Semua Dosen";
         // compact('dosen', 'title')
         // ['title' => $title,'dosen' => $dosen]
         return view('dosen', compact('dosen', 'title'));

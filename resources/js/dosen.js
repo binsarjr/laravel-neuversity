@@ -1,0 +1,1 @@
+console.log("Ini file scriptdari dosen.js asd")
