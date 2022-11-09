@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DosenController;
 use App\Models\Dosen;
 use Illuminate\Support\Facades\Route;
@@ -18,17 +19,26 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::middleware('authenticate')->group(function () {
 
-Route::get('/dosen', [DosenController::class, 'index']);
+    Route::get('/dosen', [DosenController::class, 'index']);
 
-// View Create
-Route::get('/dosen/create', [DosenController::class, 'create']);
-// Proses Create
-Route::post('/dosen/create', [DosenController::class, 'store']);
+    // View Create
+    Route::get('/dosen/create', [DosenController::class, 'create']);
+    // Proses Create
+    Route::post('/dosen/create', [DosenController::class, 'store']);
 
-// View Edit
-Route::get('/dosen/{dosen}', [DosenController::class, 'edit']);
-// Proses Dari Edit
-Route::put('/dosen/{dosen}', [DosenController::class, 'update']);
-// Proses Hapus
-Route::get('/dosen/{dosen}/hapus', [DosenController::class, 'destroy']);
+    // View Edit
+    Route::get('/dosen/{dosen}', [DosenController::class, 'edit']);
+    // Proses Dari Edit
+    Route::put('/dosen/{dosen}', [DosenController::class, 'update']);
+    // Proses Hapus
+    Route::get('/dosen/{dosen}/hapus', [DosenController::class, 'destroy']);
+});
+
+Route::middleware('authenticate:mustbeguest')->group(function () {
+    Route::get('login', [AuthController::class, 'login']);
+    Route::post('login', [AuthController::class, 'doLogin']);
+});
+
+Route::get('/logout', [AuthController::class, 'doLogout']);

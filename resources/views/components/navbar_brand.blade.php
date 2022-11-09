@@ -1,5 +1,5 @@
 <div class="navbar-brand">
-    <a class="navbar-item" href="https://bulma.io">
+    <a class="navbar-item" href="/dosen">
         <img src="https://bulma.io/images/bulma-logo.png" width="112" height="28">
     </a>
 

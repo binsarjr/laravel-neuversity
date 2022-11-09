@@ -15,6 +15,7 @@ class DosenController extends Controller
     }
     public function index(Request $req)
     {
+
         if ($req->q) {
             $dosen = Dosen::where('nama', 'like', '%' . $req->q . '%')->get();
         } else {
