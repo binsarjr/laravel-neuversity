@@ -10,14 +10,19 @@
                 <div class="field">
                     <label class="label">NIP</label>
                     <div class="control">
-                        <input type="text" name="nip" class="input">
+                        <input type="text" name="nip" class="input" value="{{ old('nip') }}">
                     </div>
+                    @error('nip')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="field">
                     <label class="label">nama</label>
                     <div class="control">
-                        <input type="text" name="nama" class="input">
-                    </div>
+                        <input type="text" name="nama" class="input" value="{{ old('nama') }}">
+                    </div> @error('nama')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="field">
                     <label class="label">kelamin</label>
@@ -28,6 +33,9 @@
                             <option value="P">Perempuan</option>
                         </select>
                     </div>
+                    @error('kelamin')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="field">
                     <label class="label">Status Menikah</label>
@@ -38,12 +46,18 @@
                             <option value="0">Belum Menikah</option>
                         </select>
                     </div>
+                    @error('sudah_menikah')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="field">
                     <label class="label">alamat</label>
                     <div class="control">
-                        <textarea name="alamat" class="textarea"></textarea>
+                        <textarea name="alamat" class="textarea">{{ old('alamat') }}</textarea>
                     </div>
+                    @error('alamat')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <button class="button is-success is-light is-small">Tambah data</button>
             </form>

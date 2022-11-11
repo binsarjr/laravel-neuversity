@@ -37,6 +37,13 @@ class DosenController extends Controller
 
     public function store(Request $request)
     {
+        $request->validate([
+            'nip' => 'required',
+            'nama' => 'required',
+            'kelamin' => 'required',
+            'sudah_menikah' => 'required',
+            'alamat' => 'required',
+        ]);
         $data = $request->all();
         $data['slug'] = Str::slug($request->nama);
         $created = Dosen::create($data);
@@ -53,6 +60,13 @@ class DosenController extends Controller
 
     public function update(Dosen $dosen, Request $request)
     {
+        $request->validate([
+            'nip' => 'required',
+            'nama' => 'required',
+            'kelamin' => 'required',
+            'sudah_menikah' => 'required',
+            'alamat' => 'required',
+        ]);
         $request->merge([
             'slug' => Str::slug($request->nama)
         ]);

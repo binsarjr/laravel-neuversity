@@ -12,14 +12,20 @@
                 <div class="field">
                     <label class="label">nip</label>
                     <div class="control">
-                        <input class="input" type="text" name="nip" value="{{ $dosen->nip }}">
+                        <input class="input" type="text" name="nip" value="{{ old('nip', $dosen->nip) }}">
                     </div>
+                    @error('nip')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="field">
                     <label class="label">nama</label>
                     <div class="control">
-                        <input class="input" type="text" name="nama" value="{{ $dosen->nama }}">
+                        <input class="input" type="text" name="nama" value="{{ old('nama', $dosen->nama) }}">
                     </div>
+                    @error('nama')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="field">
                     <label class="label">kelamin</label>
@@ -29,6 +35,9 @@
                             <option value="P" {{ $dosen->kelamin === 'P' ? 'selected' : '' }}>Perempuan</option>
                         </select>
                     </div>
+                    @error('kelamin')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="field">
                     <label class="label">Status Menikah</label>
@@ -38,12 +47,18 @@
                             <option value="0" {{ !$dosen->sudah_menikah ? 'selected' : '' }}>Belum Menikah</option>
                         </select>
                     </div>
+                    @error('sudah_menikah')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <div class="field">
                     <label class="label">alamat</label>
                     <div class="control">
-                        <textarea class="textarea" name="alamat">{{ $dosen->alamat }}</textarea>
+                        <textarea class="textarea" name="alamat">{{ old('alamat', $dosen->alamat) }}</textarea>
                     </div>
+                    @error('alamat')
+                        <small class="has-text-danger">{{ $message }}</small>
+                    @enderror
                 </div>
                 <button class="button is-success is-light is-small">update data</button>
             </form>
