@@ -15,11 +15,16 @@ class AuthController extends Controller
 
     public function doLogin(Request $request)
     {
+        $request->validate([
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
         $credentials = $request->only(['email', 'password']);
         if (Auth::attempt($credentials)) {
             return redirect('/dosen');
         } else {
-            return back();
+            return back()->withInput()->with('failedLoginMessage', 'Email and password is invalid');
         }
     }
 

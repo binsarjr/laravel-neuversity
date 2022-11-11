@@ -17,8 +17,10 @@ class DosenController extends Controller
     {
 
         if ($req->q) {
+            // SELECT * FROM dosens WHERE nama like '%{$q}%';
             $dosen = Dosen::where('nama', 'like', '%' . $req->q . '%')->get();
         } else {
+            // SELECT * FROM dosens;
             $dosen = Dosen::all();
         }
         $title = "Semua Dosen";
